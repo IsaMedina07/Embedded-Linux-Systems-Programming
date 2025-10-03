@@ -111,18 +111,3 @@ int main(int argc, char **argv) {
     fclose(logf);
     return 0;
 }
-        }
-    }
-
-    signal(SIGTERM, handle_sigterm);
-
-    while (running) {
-        unsigned int val = rand(); // simulamos lectura de sensor
-        fprintf(logf, "%s | %u\n", iso8601_timestamp(), val);
-        fflush(logf);
-        sleep(interval);
-    }
-
-    fclose(logf);
-    return 0;
-}
