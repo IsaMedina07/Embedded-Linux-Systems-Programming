@@ -1,0 +1,12 @@
+[Unit]
+Description=Mock sensor logger (assignment)
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/assignment-sensor 5
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
