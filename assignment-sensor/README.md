@@ -18,23 +18,23 @@ Si /tmp no está disponible, utiliza /var/tmp como ruta de respaldo.
 
 ```markdown
 .
-├─ 📂 **src/**
-│ └─ 📄 **assignment_sensor.c**
+├─ 📂 src/
+│ └─ 📄 assignment_sensor.c
 |
-├─ 📂 **systemd/**
-│ └─ 📄 **assignment-sensor.service**
+├─ 📂 systemd/
+│ └─ 📄 assignment-sensor.service
 |
-├─ 📂 **ai/**
-│ ├─ 📄 **prompt-log.md**
-│ ├─ 📄 **reflection.md**
-│ └─ 📄 **provenance.json**
+├─ 📂 ai/
+│ ├─ 📄 prompt-log.md
+│ ├─ 📄 reflection.md
+│ └─ 📄 provenance.json
 |
-├─ 📂 **tests/**
-│ └─ 📄 **manual-tests.md**
+├─ 📂 tests/
+│ └─ 📄 manual-tests.md
 |
-├─ 📄 **Makefile**
+├─ 📄 Makefile
 |
-└─ 📄 **README.md**
+└─ 📄 README.md
 ```
 
 ### ⚙️ Requisitos
