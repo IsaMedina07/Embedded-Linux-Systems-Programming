@@ -1,5 +1,13 @@
 {
-  "tool": "ChatGPT",
-  "model": "GPT-5",
-  "date": "2025-10-02"
+  "tools": [
+    {
+      "name": "ChatGPT GPT-5 Thinking mini",
+      "date": "2025-10-02"
+    },
+    {
+      "name": "Local GCC 12.2 (example)",
+      "date": "2025-10-02"
+    }
+  ],
+  "notes": "AI used for design, example code and docs. Code reviewed and adapted manually by student."
 }

@@ -1,11 +1,23 @@
-CC=gcc
-CFLAGS=-Wall -O2
-TARGET=assignment-sensor
+CC = gcc
+CFLAGS = -O2 -Wall -Wextra -std=gnu11
 
-all: $(TARGET)
+SRC = src/assignment_sensor.c
+OUTDIR = build
+OUT = $(OUTDIR)/assignment-sensor
 
-$(TARGET): src/main.c
-	$(CC) $(CFLAGS) -o $(TARGET) src/main.c
+all: $(OUT)
+
+$(OUT): $(SRC)
+	mkdir -p $(OUTDIR)
+	$(CC) $(CFLAGS) -o $(OUT) $(SRC)
+
+install: $(OUT)
+	sudo cp $(OUT) /usr/local/bin/assignment-sensor
+
+uninstall:
+	sudo rm -f /usr/local/bin/assignment-sensor
+	sudo rm -f /etc/systemd/system/assignment-sensor.service
+	sudo systemctl daemon-reload
 
 clean:
-	rm -f $(TARGET)
+	rm -rf $(OUTDIR)

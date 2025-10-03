@@ -1,94 +1,110 @@
-# Assignment: Systemd Service que registra un sensor simulado
+## 🛠️ Assignment: Systemd Service que registra un sensor simulado
 
-Este proyecto implementa un **servicio en systemd** que arranca en `multi-user.target` y ejecuta un programa en **C** que simula la lectura de un sensor.  
-El servicio registra periódicamente un valor junto con la **marca de tiempo ISO-8601** en un archivo de log bajo `/tmp`.  
-Si `/tmp` no está disponible, utiliza `/var/tmp` como ruta de respaldo.
+Este proyecto implementa un servicio en systemd que arranca en multi-user.target y ejecuta un programa en C que simula la lectura de un sensor.
+El servicio registra periódicamente un valor junto con la marca de tiempo ISO-8601 en un archivo de log bajo /tmp.
+Si /tmp no está disponible, utiliza /var/tmp como ruta de respaldo.
 
----
+### 📌 Características
 
-## 📌 Características
-
-- Programa escrito en **C**, compilado con `make`.
-- Registro en archivo: `TIMESTAMP | VALUE`.
-- Intervalo configurable (por defecto: 5 segundos).
-- Manejo de **SIGTERM** para apagado limpio.
-- Arranca automáticamente con **systemd** en `multi-user.target`.
-
----
+- Programa escrito en C, compilado con make.
+- Registro en archivo: TIMESTAMP | VALUE.
+- Intervalo configurable mediante flag (--interval <segundos>, por defecto: 5 segundos).
+- Ruta de log configurable (--logfile <ruta>).
+- Simulación de sensor usando /dev/urandom (puede cambiarse por otro).
+- Manejo de SIGTERM para apagado limpio (flush y cierre del log).
+- Arranca automáticamente con systemd en multi-user.target.
 
 ## 📂 Estructura del proyecto
 
-| Archivo/Directorio               | Descripción                                                                          |
-| :------------------------------- | :----------------------------------------------------------------------------------- |
-| ├─ **src/**                      | Código fuente principal en C.                                                        |
-| │ └─ `main.c`                    | Archivo principal de la aplicación.                                                  |
-| ├─ **systemd/**                  | Archivos de configuración de servicio para Linux.                                    |
-| │ └─ `assignment-sensor.service` | Unidad de servicio systemd para la aplicación (sensor).                              |
-| ├─ **ai/**                       | Evidencia y registro del uso de Inteligencia Artificial (IA).                        |
-| │ ├─ `prompt-log.md`             | Registro de los prompts (instrucciones) dados a la IA.                               |
-| │ ├─ `reflection.md`             | Reflexión sobre el uso de la IA y su impacto en el proyecto.                         |
-| │ └─ `provenance.json`           | Metadatos o procedencia del contenido generado o asistido por IA.                    |
-| ├─ **tests/**                    | Contiene procedimientos y resultados de pruebas.                                     |
-| │ └─ `manual-tests.md`           | Documentación de pruebas manuales realizadas.                                        |
-| ├─ `Makefile`                    | Archivo de utilidad para compilar el código y automatizar tareas.                    |
-| └─ `README.md`                   | Documento principal con la introducción del proyecto, configuración e instrucciones. |
+.
+├─ 📂 **src/** # 🧑‍💻 Código fuente principal en C.
+│ └─ 📄 **assignment_sensor.c** # 🎯 Archivo principal de la aplicación (el sensor).
+|
+├─ 📂 **systemd/** # ⚙️ Archivos de configuración de servicio para Linux.
+│ └─ 📄 **assignment-sensor.service** # 🚀 Unidad de servicio systemd para la ejecución automática del programa.
+|
+├─ 📂 **ai/** # 🤖 Evidencia de uso de Inteligencia Artificial en el desarrollo.
+│ ├─ 📄 **prompt-log.md** # 💬 Registro de los _prompts_ (instrucciones) dados a la IA.
+│ ├─ 📄 **reflection.md** # 🧠 Reflexión sobre el proceso de desarrollo asistido con IA.
+│ └─ 📄 **provenance.json** # 📜 Información de procedencia de la IA (modelos, fechas de uso, etc.).
+|
+├─ 📂 **tests/** # 🧪 Contiene documentación de pruebas realizadas.
+│ └─ 📄 **manual-tests.md** # ✅ Procedimientos y resultados de pruebas manuales.
+|
+├─ 📄 **Makefile** # 🛠️ Script para compilar el código e instalar/desinstalar el binario.
+|
+└─ 📄 **README.md** # 📘 Documento principal con introducción, instrucciones de instalación y uso.
 
----
+### ⚙️ Requisitos
 
-## ⚙️ Requisitos
-
-- Linux con `systemd` (ej. Debian, Ubuntu, Kali, etc.).
-- Compilador de C (`gcc`).
-- Acceso `sudo` para instalar el servicio.
-
----
+- Distribución Linux con systemd (ej. Debian, Ubuntu, Kali, Arch).
+- Compilador de C (gcc).
+- Acceso con privilegios sudo para instalación del servicio.
 
 ## 🚀 Instrucciones de uso
 
-### 1. Clonar y compilar
+1. Clonar y compilar
 
 ```bash
-git clone <URL_DE_TU_REPO>
+git clone https://github.com/IsaMedina07/Embedded-Linux-Systems-Programming.git
 cd assignment-sensor
 make
 ```
 
-### 2. Instalar binario y servicio
+El binario se generará en build/assignment-sensor.
+
+2. Instalar binario y servicio
 
 ```bash
-sudo cp assignment-sensor /usr/local/bin/
+sudo make install
 sudo cp systemd/assignment-sensor.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now assignment-sensor.service
 ```
 
-### 3. Verificar estado
+3. Verificar estado del servicio
 
 ```bash
-systemctl status assignment-sensor
+systemctl status assignment-sensor.service
 ```
 
-### 4. Ver logs
+4. Ver logs generados
+
+Por defecto, los logs se guardan en:
 
 ```bash
 tail -f /tmp/assignment_sensor.log
 ```
 
-Si /tmp no es escribible, los logs se guardarán en:
+Si /tmp no es escribible, se utiliza la ruta de respaldo:
 
 ```bash
 /var/tmp/assignment_sensor.log
 ```
 
-### 5. Detener el servicio
+5. Probar configuración manual
+
+- Intervalo personalizado:
 
 ```bash
-sudo systemctl stop assignment-sensor
+/usr/local/bin/assignment-sensor --interval 2
+```
+
+- Logfile personalizado:
+
+```bash
+/usr/local/bin/assignment-sensor --logfile /var/log/misensor.log
+```
+
+6. Detener el servicio
+
+```bash
+sudo systemctl stop assignment-sensor.service
 ```
 
 El programa recibe SIGTERM, cierra el archivo y termina correctamente.
 
-### 6. Desinstalar
+7. Desinstalar
 
 ```bash
 sudo systemctl disable --now assignment-sensor.service
@@ -96,3 +112,59 @@ sudo rm /usr/local/bin/assignment-sensor
 sudo rm /etc/systemd/system/assignment-sensor.service
 sudo systemctl daemon-reload
 ```
+
+## 🧪 Pruebas
+
+En tests/manual-tests.md se documenta cada caso. Ejemplos:
+
+1. Happy Path
+
+Arrancar el servicio y confirmar que escribe logs:
+
+```bash
+tail -n 5 /tmp/assignment_sensor.log
+```
+
+2. Fallback Path
+   Montar /tmp como no escribible y verificar que el log se crea en /var/tmp.
+
+3. SIGTERM Handling
+
+```bash
+sudo systemctl stop assignment-sensor.service
+```
+
+Confirmar que el archivo de log queda cerrado sin líneas incompletas.
+
+4. Error Path
+   Ejecutar con un dispositivo inexistente:
+
+```bash
+/usr/local/bin/assignment-sensor --device /dev/fake0
+```
+
+El programa debe fallar y salir con código ≠ 0.
+
+5. Restart Test (opcional)
+   Matar el proceso manualmente:
+
+```bash
+sudo kill -9 <PID>
+```
+
+Verificar que systemd lo reinicia (si está configurado Restart=on-failure).
+
+## 📖 Diseño
+
+- Se eligió /dev/urandom como sensor simulado porque provee un flujo seguro de valores pseudoaleatorios, sin bloquear.
+- Formato de tiempo: ISO-8601 en UTC, compatible con herramientas estándar.
+- Fallback en /var/tmp para asegurar persistencia incluso si /tmp no está disponible.
+- Se usa systemd para garantizar inicio automático, gestión de fallos y limpieza.
+
+## ✨ Evidencia de IA
+
+Este proyecto fue desarrollado con apoyo de herramientas de IA:
+
+- Prompt Log (ai/prompt-log.md): histórico de interacciones.
+- Reflexión (ai/reflection.md): análisis crítico del proceso asistido.
+- Provenance (ai/provenance.json): metadatos de modelos y fechas.

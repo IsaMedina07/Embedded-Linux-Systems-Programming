@@ -1,12 +1,19 @@
+# systemd/assignment-sensor.service
 [Unit]
-Description=Mock sensor logger (assignment)
-After=multi-user.target
+Description=Assignment: Mock sensor logger
+After=network.target multi-user.target
+Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/assignment-sensor 5
+# ExecStart: ajustar si instalas en /usr/local/bin
+ExecStart=/usr/local/bin/assignment-sensor --interval 5 --logfile /tmp/assignment_sensor.log
+# Si prefieres correr como usuario no-root, añade:
+# User=someuser
 Restart=on-failure
 RestartSec=2
+KillSignal=SIGTERM
+TimeoutStopSec=10
 
 [Install]
 WantedBy=multi-user.target
