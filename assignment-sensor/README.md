@@ -18,23 +18,23 @@ Si /tmp no está disponible, utiliza /var/tmp como ruta de respaldo.
 
 ```markdown
 .
-├─ 📂 **src/** # 🧑‍💻 Código fuente principal en C.
-│ └─ 📄 **assignment_sensor.c** # 🎯 Archivo principal de la aplicación (el sensor).
+├─ 📂 _src/_ # 🧑‍💻 Código fuente principal en C.
+│ └─ 📄 _assignment_sensor.c_ # 🎯 Archivo principal de la aplicación (el sensor).
 |
-├─ 📂 **systemd/** # ⚙️ Archivos de configuración de servicio para Linux.
-│ └─ 📄 **assignment-sensor.service** # 🚀 Unidad de servicio systemd para la ejecución automática del programa.
+├─ 📂 _systemd/_ # ⚙️ Archivos de configuración de servicio para Linux.
+│ └─ 📄 _assignment-sensor.service_ # 🚀 Unidad de servicio systemd para la ejecución automática del programa.
 |
-├─ 📂 **ai/** # 🤖 Evidencia de uso de Inteligencia Artificial en el desarrollo.
-│ ├─ 📄 **prompt-log.md** # 💬 Registro de los _prompts_ (instrucciones) dados a la IA.
-│ ├─ 📄 **reflection.md** # 🧠 Reflexión sobre el proceso de desarrollo asistido con IA.
-│ └─ 📄 **provenance.json** # 📜 Información de procedencia de la IA (modelos, fechas de uso, etc.).
+├─ 📂 _ai/_ # 🤖 Evidencia de uso de Inteligencia Artificial en el desarrollo.
+│ ├─ 📄 _prompt-log.md_ # 💬 Registro de los _prompts_ (instrucciones) dados a la IA.
+│ ├─ 📄 _reflection.md_ # 🧠 Reflexión sobre el proceso de desarrollo asistido con IA.
+│ └─ 📄 _provenance.json_ # 📜 Información de procedencia de la IA (modelos, fechas de uso, etc.).
 |
-├─ 📂 **tests/** # 🧪 Contiene documentación de pruebas realizadas.
-│ └─ 📄 **manual-tests.md** # ✅ Procedimientos y resultados de pruebas manuales.
+├─ 📂 _tests/_ # 🧪 Contiene documentación de pruebas realizadas.
+│ └─ 📄 _manual-tests.md_ # ✅ Procedimientos y resultados de pruebas manuales.
 |
-├─ 📄 **Makefile** # 🛠️ Script para compilar el código e instalar/desinstalar el binario.
+├─ 📄 _Makefile_ # 🛠️ Script para compilar el código e instalar/desinstalar el binario.
 |
-└─ 📄 **README.md** # 📘 Documento principal con introducción, instrucciones de instalación y uso.
+└─ 📄 _README.md_ # 📘 Documento principal con introducción, instrucciones de instalación y uso.
 ```
 
 ### ⚙️ Requisitos
