@@ -16,6 +16,7 @@ Si /tmp no está disponible, utiliza /var/tmp como ruta de respaldo.
 
 ## 📂 Estructura del proyecto
 
+```markdown
 .
 ├─ 📂 **src/** # 🧑‍💻 Código fuente principal en C.
 │ └─ 📄 **assignment_sensor.c** # 🎯 Archivo principal de la aplicación (el sensor).
@@ -34,6 +35,7 @@ Si /tmp no está disponible, utiliza /var/tmp como ruta de respaldo.
 ├─ 📄 **Makefile** # 🛠️ Script para compilar el código e instalar/desinstalar el binario.
 |
 └─ 📄 **README.md** # 📘 Documento principal con introducción, instrucciones de instalación y uso.
+```
 
 ### ⚙️ Requisitos
 
