@@ -18,18 +18,20 @@ Si `/tmp` no está disponible, utiliza `/var/tmp` como ruta de respaldo.
 
 ## 📂 Estructura del proyecto
 
-├─ src/ # código fuente en C
-│ └─ main.c
-├─ systemd/
-│ └─ assignment-sensor.service
-├─ ai/ # evidencia de uso de IA
-│ ├─ prompt-log.md
-│ ├─ reflection.md
-│ └─ provenance.json
-├─ tests/
-│ └─ manual-tests.md
-├─ Makefile
-└─ README.md
+| Archivo/Directorio               | Descripción                                                                          |
+| :------------------------------- | :----------------------------------------------------------------------------------- |
+| ├─ **src/**                      | Código fuente principal en C.                                                        |
+| │ └─ `main.c`                    | Archivo principal de la aplicación.                                                  |
+| ├─ **systemd/**                  | Archivos de configuración de servicio para Linux.                                    |
+| │ └─ `assignment-sensor.service` | Unidad de servicio systemd para la aplicación (sensor).                              |
+| ├─ **ai/**                       | Evidencia y registro del uso de Inteligencia Artificial (IA).                        |
+| │ ├─ `prompt-log.md`             | Registro de los prompts (instrucciones) dados a la IA.                               |
+| │ ├─ `reflection.md`             | Reflexión sobre el uso de la IA y su impacto en el proyecto.                         |
+| │ └─ `provenance.json`           | Metadatos o procedencia del contenido generado o asistido por IA.                    |
+| ├─ **tests/**                    | Contiene procedimientos y resultados de pruebas.                                     |
+| │ └─ `manual-tests.md`           | Documentación de pruebas manuales realizadas.                                        |
+| ├─ `Makefile`                    | Archivo de utilidad para compilar el código y automatizar tareas.                    |
+| └─ `README.md`                   | Documento principal con la introducción del proyecto, configuración e instrucciones. |
 
 ---
 
