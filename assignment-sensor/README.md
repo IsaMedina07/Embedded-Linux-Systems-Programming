@@ -18,23 +18,23 @@ Si /tmp no está disponible, utiliza /var/tmp como ruta de respaldo.
 
 ```markdown
 .
-├─ 📂 _src/_ # 🧑‍💻 Código fuente principal en C.
-│ └─ 📄 _assignment_sensor.c_ # 🎯 Archivo principal de la aplicación (el sensor).
+├─ 📂 **src/**
+│ └─ 📄 **assignment_sensor.c**
 |
-├─ 📂 _systemd/_ # ⚙️ Archivos de configuración de servicio para Linux.
-│ └─ 📄 _assignment-sensor.service_ # 🚀 Unidad de servicio systemd para la ejecución automática del programa.
+├─ 📂 **systemd/**
+│ └─ 📄 **assignment-sensor.service**
 |
-├─ 📂 _ai/_ # 🤖 Evidencia de uso de Inteligencia Artificial en el desarrollo.
-│ ├─ 📄 _prompt-log.md_ # 💬 Registro de los _prompts_ (instrucciones) dados a la IA.
-│ ├─ 📄 _reflection.md_ # 🧠 Reflexión sobre el proceso de desarrollo asistido con IA.
-│ └─ 📄 _provenance.json_ # 📜 Información de procedencia de la IA (modelos, fechas de uso, etc.).
+├─ 📂 **ai/**
+│ ├─ 📄 **prompt-log.md**
+│ ├─ 📄 **reflection.md**
+│ └─ 📄 **provenance.json**
 |
-├─ 📂 _tests/_ # 🧪 Contiene documentación de pruebas realizadas.
-│ └─ 📄 _manual-tests.md_ # ✅ Procedimientos y resultados de pruebas manuales.
+├─ 📂 **tests/**
+│ └─ 📄 **manual-tests.md**
 |
-├─ 📄 _Makefile_ # 🛠️ Script para compilar el código e instalar/desinstalar el binario.
+├─ 📄 **Makefile**
 |
-└─ 📄 _README.md_ # 📘 Documento principal con introducción, instrucciones de instalación y uso.
+└─ 📄 **README.md**
 ```
 
 ### ⚙️ Requisitos
